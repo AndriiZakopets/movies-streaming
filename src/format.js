@@ -9,7 +9,7 @@ async function formatFile() {
   const inputPath = getVideoPath(file);
   const outputPath = await selectVideoName();
   const video = await new ffmpeg(inputPath);
-  video.addCommand(`-c:v copy -c:a libmp3lame -map 0:${audioStream.index} -map 0:${videoStream.index} -t 00:01:00`);
+  video.addCommand(`-c:v copy -c:a libmp3lame -map 0:${audioStream.index} -map 0:${videoStream.index}`);
   video.save(`"${outputPath}"`, (err) => {
     if (err) throw err;
     console.log('success');
